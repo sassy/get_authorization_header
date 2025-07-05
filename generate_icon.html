@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Icon Generator</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="128" height="128"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // 背景
+        ctx.fillStyle = '#4CAF50';
+        ctx.fillRect(0, 0, 128, 128);
+
+        // テキスト
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 16px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Auth', 64, 45);
+        ctx.fillText('Header', 64, 65);
+
+        // バー
+        ctx.fillStyle = 'white';
+        ctx.fillRect(20, 75, 88, 8);
+        ctx.fillStyle = '#81C784';
+        ctx.fillRect(20, 90, 60, 8);
+        ctx.fillStyle = '#A5D6A7';
+        ctx.fillRect(20, 105, 70, 8);
+
+        // PNGとしてダウンロード
+        canvas.toBlob(function (blob) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'hello_extensions.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+
+</html>
