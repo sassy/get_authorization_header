@@ -1,0 +1,18 @@
+{
+    "name": "get-authorization-header",
+    "version": "1.0.0",
+    "description": "Chrome extension to get Authorization headers",
+    "type": "module",
+    "scripts": {
+        "dev": "vite build --watch",
+        "build": "vite build && cp src/manifest.json dist/ && cp src/hello_extensions.svg dist/ && cp src/popup.html dist/",
+        "type-check": "tsc --noEmit"
+    },
+    "devDependencies": {
+        "@crxjs/vite-plugin": "^2.0.0-beta.21",
+        "@types/chrome": "^0.0.251",
+        "@types/node": "^20.10.0",
+        "typescript": "^5.3.0",
+        "vite": "^5.0.0"
+    }
+}

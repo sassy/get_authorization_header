@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 400px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .value {
+            font-family: monospace;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        .clear-btn {
+            background-color: #f44336;
+        }
+
+        .clear-btn:hover {
+            background-color: #da190b;
+        }
+
+        .copy-btn {
+            background-color: #2196F3;
+            margin-top: 10px;
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        .copy-btn:hover {
+            background-color: #1976D2;
+        }
+
+        .copy-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2>Authorization Header 取得</h2>
+    </div>
+
+    <button id="getAuthHeader">Authorization Header を取得</button>
+    <button id="clearResult" class="clear-btn">結果をクリア</button>
+
+    <div id="result" class="result" style="display: none;">
+        <div class="label">Authorization Header:</div>
+        <div id="authValue" class="value"></div>
+        <button id="copyAuth" class="copy-btn">クリップボードにコピー</button>
+        <div class="label">取得時刻:</div>
+        <div id="timestamp" class="value"></div>
+        <div class="label">URL:</div>
+        <div id="url" class="value"></div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
