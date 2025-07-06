@@ -1,8 +1,0 @@
-<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-    <rect width="128" height="128" fill="#4CAF50" rx="8" />
-    <text x="64" y="45" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Auth</text>
-    <text x="64" y="65" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Header</text>
-    <rect x="20" y="75" width="88" height="8" fill="white" rx="4" />
-    <rect x="20" y="90" width="60" height="8" fill="#81C784" rx="4" />
-    <rect x="20" y="105" width="70" height="8" fill="#A5D6A7" rx="4" />
-</svg>

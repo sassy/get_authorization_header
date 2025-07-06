@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const getAuthHeaderBtn = document.getElementById('getAuthHeader') as HTMLButtonElement;
   const clearResultBtn = document.getElementById('clearResult') as HTMLButtonElement;
   const copyAuthBtn = document.getElementById('copyAuth') as HTMLButtonElement;
+  const copyJsonBtn = document.getElementById('copyJson') as HTMLButtonElement;
   const resultDiv = document.getElementById('result') as HTMLDivElement;
   const authValueDiv = document.getElementById('authValue') as HTMLDivElement;
   const timestampDiv = document.getElementById('timestamp') as HTMLDivElement;
@@ -73,6 +74,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  copyJsonBtn.addEventListener('click', async () => {
+    try {
+      const authHeader = authValueDiv.textContent;
+      if (authHeader && authHeader !== 'Authorization ヘッダーが見つかりませんでした' && !authHeader.startsWith('エラー:')) {
+        const jsonObject = { "Authorization": authHeader };
+        const jsonString = JSON.stringify(jsonObject, null, 2);
+        await navigator.clipboard.writeText(jsonString);
+
+        // ボタンのテキストを一時的に変更してフィードバックを提供
+        const originalText = copyJsonBtn.textContent;
+        copyJsonBtn.textContent = 'コピーしました！';
+        copyJsonBtn.disabled = true;
+
+        setTimeout(() => {
+          copyJsonBtn.textContent = originalText;
+          copyJsonBtn.disabled = false;
+        }, 2000);
+      } else {
+        alert('コピーできる有効なAuthorizationヘッダーがありません');
+      }
+    } catch (error) {
+      console.error('クリップボードへのコピーに失敗しました:', error);
+      alert('クリップボードへのコピーに失敗しました');
+    }
+  });
+
   function showResult(authHeader: string, timestamp: string, url: string): void {
     authValueDiv.textContent = authHeader;
     timestampDiv.textContent = timestamp;
@@ -82,8 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // コピーボタンの表示制御
     if (authHeader && authHeader !== 'Authorization ヘッダーが見つかりませんでした' && !authHeader.startsWith('エラー:')) {
       copyAuthBtn.style.display = 'block';
+      copyJsonBtn.style.display = 'block';
     } else {
       copyAuthBtn.style.display = 'none';
+      copyJsonBtn.style.display = 'none';
     }
   }
 });
